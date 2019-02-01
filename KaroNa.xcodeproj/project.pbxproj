@@ -14,9 +14,11 @@
 		2709310721F94C8500BCAA63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2709310521F94C8500BCAA63 /* LaunchScreen.storyboard */; };
 		270FE6A521FFFD0000A91214 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 270FE6A321FFFD0000A91214 /* DataModel.xcdatamodeld */; };
 		2779F8002202965F00A2C2FF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2779F7FF2202965F00A2C2FF /* CategoryViewController.swift */; };
+		62C0FCA94EE958FCAA2A092A /* Pods_KaroNa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739BDD565CBF01BB67C1AD4A /* Pods_KaroNa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0305893368C974458FE28716 /* Pods-KaroNa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaroNa.debug.xcconfig"; path = "Target Support Files/Pods-KaroNa/Pods-KaroNa.debug.xcconfig"; sourceTree = "<group>"; };
 		270930F921F94C8400BCAA63 /* KaroNa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaroNa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		270930FC21F94C8400BCAA63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		270930FE21F94C8400BCAA63 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		2709310821F94C8500BCAA63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		270FE6A421FFFD0000A91214 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		2779F7FF2202965F00A2C2FF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		31433585A82F1F9387B984EA /* Pods-KaroNa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaroNa.release.xcconfig"; path = "Target Support Files/Pods-KaroNa/Pods-KaroNa.release.xcconfig"; sourceTree = "<group>"; };
+		739BDD565CBF01BB67C1AD4A /* Pods_KaroNa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KaroNa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C0FCA94EE958FCAA2A092A /* Pods_KaroNa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				270930FB21F94C8400BCAA63 /* KaroNa */,
 				270930FA21F94C8400BCAA63 /* Products */,
+				69297DD9DB6920C62742A3F0 /* Pods */,
+				845BBAAFE502E6E029E8A115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +109,24 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		69297DD9DB6920C62742A3F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0305893368C974458FE28716 /* Pods-KaroNa.debug.xcconfig */,
+				31433585A82F1F9387B984EA /* Pods-KaroNa.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		845BBAAFE502E6E029E8A115 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				739BDD565CBF01BB67C1AD4A /* Pods_KaroNa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +134,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2709310B21F94C8500BCAA63 /* Build configuration list for PBXNativeTarget "KaroNa" */;
 			buildPhases = (
+				D894FF59934F4B333BDFEA6E /* [CP] Check Pods Manifest.lock */,
 				270930F521F94C8400BCAA63 /* Sources */,
 				270930F621F94C8400BCAA63 /* Frameworks */,
 				270930F721F94C8400BCAA63 /* Resources */,
+				A7F464A3F0E377DB601BFB41 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +194,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A7F464A3F0E377DB601BFB41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KaroNa/Pods-KaroNa-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KaroNa/Pods-KaroNa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D894FF59934F4B333BDFEA6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KaroNa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		270930F521F94C8400BCAA63 /* Sources */ = {
@@ -320,6 +396,7 @@
 		};
 		2709310C21F94C8500BCAA63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0305893368C974458FE28716 /* Pods-KaroNa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,6 +415,7 @@
 		};
 		2709310D21F94C8500BCAA63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31433585A82F1F9387B984EA /* Pods-KaroNa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
