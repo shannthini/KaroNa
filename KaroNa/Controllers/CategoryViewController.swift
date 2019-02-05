@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
 
     let realm = try! Realm()
     var categotyListArray: Results<Category>?
@@ -19,6 +20,7 @@ class CategoryViewController: UITableViewController {
         super.viewDidLoad()
         
         loadCategoriesList()
+        
         let pathToRealmDatabase = Realm.Configuration.defaultConfiguration.fileURL
         print(pathToRealmDatabase!)
     }
@@ -46,10 +48,16 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = categotyListArray?[indexPath.row].name ?? "No categoties added"
+        let cellColor = UIColor(hexString: categotyListArray?[indexPath.row].backgroundColor ?? "ffffff")
+        cell.backgroundColor = cellColor
+        cell.textLabel?.textColor = ContrastColorOf(cellColor!, returnFlat: true)
         return cell
     }
+    
+    
+    
     
     
     //MARK: - CURD From coreData
@@ -71,7 +79,19 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
         
     }
-
+    
+    override func updateAction (at indexPath:IndexPath) {
+        if let categoryToDelete = self.categotyListArray?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(categoryToDelete)
+                    
+                }
+            } catch {
+                print("Error in deleting category \(error)")
+            }
+        }
+    }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -88,6 +108,7 @@ class CategoryViewController: UITableViewController {
             if ((textField.text?.count)! > 0) {
             let newCategory = Category()
                 newCategory.name = textField.text!
+                newCategory.backgroundColor = UIColor.randomFlat.hexValue()
                 self.saveCategory(category: newCategory)
             }else {
                 print("No category added")
@@ -100,3 +121,4 @@ class CategoryViewController: UITableViewController {
     }
     
 }
+

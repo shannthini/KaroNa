@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
-class ToDoListViewController: UITableViewController {
+class ToDoListViewController: SwipeTableViewController {
 
     var itemArray: Results<Item>?
     let realm = try? Realm()
@@ -18,16 +19,10 @@ class ToDoListViewController: UITableViewController {
             loadItems()
         }
     }
-    //let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("item.plist")
-    
-    let filePathToCoreData = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print(filePathToCoreData)
 
    }
 
@@ -35,14 +30,21 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        
+        let categoryColor = selectedCategory?.backgroundColor ?? "ffffff"
         
         if let item = itemArray?[indexPath.row] {
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark: .none
+            if let color = UIColor(hexString: categoryColor)?.darken(byPercentage: CGFloat(indexPath.row)/CGFloat(itemArray!.count)) {
+                cell.backgroundColor = color
+                cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+            }
         } else
         {
             cell.textLabel?.text = "No items added yet"
+            cell.backgroundColor = UIColor.white
         }
         return cell
     }
@@ -115,6 +117,18 @@ class ToDoListViewController: UITableViewController {
         
        itemArray = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         tableView.reloadData()
+    }
+    
+    override func updateAction(at indexPath: IndexPath) {
+        if let itemToBeDeleted = itemArray?[indexPath.row] {
+            do {
+                try self.realm?.write {
+                    self.realm?.delete(itemToBeDeleted)
+                }
+            }catch {
+                print("Error while deleting item \(error)")
+            }
+        }
     }
     
 }
